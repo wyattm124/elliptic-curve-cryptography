@@ -1,0 +1,18 @@
+#!/bin/bash
+
+cd ./Server/src
+javac *.java
+cd ..
+mv ./src/*.class ./ecc
+jar cvfm Server.jar ./manifest.txt ecc/
+sudo docker build -t echo-server ./
+cd ..
+
+cd ./Client/src
+javac *.java
+cd ..
+mv ./src/*.class ./ecc
+jar cvfm Client.jar ./manifest.txt ecc/
+sudo docker build -t echo-client ./
+cd ..
+
